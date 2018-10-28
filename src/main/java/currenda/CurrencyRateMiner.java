@@ -29,8 +29,10 @@ public class CurrencyRateMiner {
                 CurrencyInfo currencyInfo = BankDAO.getCurrencyInfo(currencyCode, startDate, endDate);
                 System.out.println("Average Buying Rate: " + format.format(currencyInfo.avgBuyingRate()));
                 System.out.println("Standard Deviation of Selling Rates: " + format.format(currencyInfo.standardDeviationOfSellingRates()));
-            } catch (IOException | IllegalArgumentException e) {
-                System.out.println("Error: " + e.toString());
+            } catch (IOException e) {
+                System.out.println(e.getClass() + ": Could not get such entries from NBP API.");
+            } catch (IllegalArgumentException e){
+                System.out.println(e.getClass() + ": " + e.getMessage());
             }
         }
     }
