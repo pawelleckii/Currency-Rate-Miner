@@ -34,6 +34,7 @@ public class BankDAO {
         if(!checkDate(endDate)){
             throw new IllegalArgumentException("Wrong end date.");
         }
+
         InputStream stream = null;
         try {
             String sURL = API_URL + currencyCode + "/" + startDate + "/" + endDate + URL_SUFIX;
